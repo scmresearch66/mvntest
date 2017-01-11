@@ -1,11 +1,8 @@
 node {
-  stages {
-    stage('build') {
-      steps {
-        checkout scm
-        sh 'mvn --version'
-        sh 'mvn package'
-      }
-    }
+  checkout scm
+
+  stage('build') {
+      sh 'mvn --version'
+      sh 'mvn package'
   }
 }
