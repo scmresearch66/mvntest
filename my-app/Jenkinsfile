@@ -7,6 +7,7 @@ node {
             */
 
             sh 'id';
+            sh 'docker';
 
             timeout(60) {
                 /* Invoke Gradle which has the actual task graph defined inside of it
