@@ -1,8 +1,21 @@
 node {
   checkout scm
 
-  stage('build') {
-      sh 'mvn --version'
-      sh 'mvn package'
+  stage('Build site') {
+            /* If the slave can't gather resources and build the site in 60 minutes,
+            * something is very wrong
+            */
+            timeout(60) {
+                /* Invoke Gradle which has the actual task graph defined inside of it
+                * for the building of the site
+                */
+                docker.image('java:8').inside {
+                    withEnv([
+                        'HOME=.',
+                        ]) {
+                        sh './gradlew --quiet --console=plain --no-daemon --info --stacktrace'
+                    }
+                }
+            }
   }
 }
