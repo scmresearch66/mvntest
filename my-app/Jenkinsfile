@@ -1,5 +1,9 @@
 node {
   checkout scm
-  def mvnHome = tool 'M3'
-  sh "${mvnHome}/bin/mvn -B verify" 
+
+  try {
+    stage 'Clean up'
+    def mvnHome = tool 'M3'
+    sh "cd my-app && ${mvnHome}/bin/mvn package" 
+  }
 }
