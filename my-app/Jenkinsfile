@@ -6,4 +6,8 @@ node {
     def mvnHome = tool 'M3'
     sh "cd my-app && ${mvnHome}/bin/mvn package" 
   }
+  finally {
+    stage 'Collect test reports'
+    step([$class: 'JUnitResultArchiver', testResults: '**/reports/*.xml'])
+  }
 }
