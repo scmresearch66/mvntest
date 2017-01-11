@@ -5,6 +5,9 @@ node {
             /* If the slave can't gather resources and build the site in 60 minutes,
             * something is very wrong
             */
+
+            sh 'id';
+
             timeout(60) {
                 /* Invoke Gradle which has the actual task graph defined inside of it
                 * for the building of the site
