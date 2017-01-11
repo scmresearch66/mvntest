@@ -1,25 +1,13 @@
-node {
-  checkout scm
 
   pipeline {
     agent { docker 'maven:3.3.3' }
     stages {
       stage('build') {
         steps {
+          checkout scm
           sh 'mvn --version'
           sh 'mvn install'
         }
       }
     }
   }
-
-  try {
-    stage 'Clean up'
-    def mvnHome = tool 'M3'
-    sh "cd my-app && ${mvnHome}/bin/mvn package" 
-  }
-  finally {
-    stage 'Collect test reports'
-    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/*.xml'])
-  }
-}
