@@ -1,10 +1,8 @@
 node {
   checkout scm
 
+  env.PATH = "/usr/local/bin:${env.PATH}"
   stage('Build site') {
-            /* If the slave can't gather resources and build the site in 60 minutes,
-            * something is very wrong
-            */
 
             sh 'id';
             sh 'echo $PATH';
