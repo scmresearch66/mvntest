@@ -12,8 +12,9 @@ node {
 
   stage('Inside Docker') {
     timeout(60) {
+      env.PATH = "/usr/local/bin:${env.PATH}"
       docker.image("centos:6.7").inside() {
-        sh 'for i in `seq 1 50`; do echo $i;date;sleep 2;done'
+        sh 'hostname'
       }
     }
   }
