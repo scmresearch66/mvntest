@@ -2,23 +2,24 @@ node {
   checkout scm
 
   env.PATH = "/usr/local/bin:${env.PATH}"
-  stage('Build site') {
 
+  stage('Build site') {
             sh 'id';
             sh 'echo $PATH';
             sh 'type docker';
             sh 'docker ps';
+   }
 
+  stage('Inside Docker') {
             timeout(60) {
                 /* Invoke Gradle which has the actual task graph defined inside of it
                 * for the building of the site
                 */
-  stage('Inside Docker') {
                 docker.image('java:8').inside {
                     withEnv([
                         'HOME=.',
                         ]) {
-                        sh './gradlew --quiet --console=plain --no-daemon --info --stacktrace'
+                        sh 'java --version'
                     }
                 }
             }
