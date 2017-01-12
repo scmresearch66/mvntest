@@ -12,10 +12,8 @@ node {
 
   stage('Inside Docker') {
     timeout(60) {
-      docker.image('java:8').inside {
-        withEnv([ 'HOME=.' ]) {
-          sh 'java --version'
-        }
+      docker.image("centos:6.7").inside() {
+        sh 'for i in `seq 1 50`; do echo $i;date;sleep 2;done'
       }
     }
   }
