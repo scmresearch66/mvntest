@@ -13,6 +13,7 @@ node {
                 /* Invoke Gradle which has the actual task graph defined inside of it
                 * for the building of the site
                 */
+  stage('Inside Docker') {
                 docker.image('java:8').inside {
                     withEnv([
                         'HOME=.',
@@ -21,5 +22,6 @@ node {
                     }
                 }
             }
+    }
   }
 }
