@@ -4,25 +4,19 @@ node {
   env.PATH = "/usr/local/bin:${env.PATH}"
 
   stage('Build site') {
-            sh 'id';
-            sh 'echo $PATH';
-            sh 'type docker';
-            sh 'docker ps';
-   }
+    sh 'id';
+    sh 'echo $PATH';
+    sh 'type docker';
+    sh 'docker ps';
+  }
 
   stage('Inside Docker') {
-            timeout(60) {
-                /* Invoke Gradle which has the actual task graph defined inside of it
-                * for the building of the site
-                */
-                docker.image('java:8').inside {
-                    withEnv([
-                        'HOME=.',
-                        ]) {
-                        sh 'java --version'
-                    }
-                }
-            }
+    timeout(60) {
+      docker.image('java:8').inside {
+        withEnv([ 'HOME=.' ]) {
+          sh 'java --version'
+        }
+      }
     }
   }
 }
