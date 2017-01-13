@@ -8,10 +8,8 @@ node("dockernode") {
     sh 'echo $PATH';
     sh 'type docker';
     sh 'docker ps';
-
   }
 
-/*
   stage('Inside Docker') {
     timeout(60) {
       env.PATH = "/usr/local/bin:${env.PATH}"
@@ -20,5 +18,4 @@ node("dockernode") {
       }
     }
   }
-*/
 }
