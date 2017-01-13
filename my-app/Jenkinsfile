@@ -1,5 +1,5 @@
 node("dockernode") {
-  checkout scm
+  #checkout scm
 
   env.PATH = "/usr/local/bin:${env.PATH}"
 
@@ -10,12 +10,12 @@ node("dockernode") {
     sh 'docker ps';
   }
 
-  stage('Inside Docker') {
-    timeout(60) {
-      env.PATH = "/usr/local/bin:${env.PATH}"
-      docker.image("centos:6.7").inside() {
-        sh 'hostname'
-      }
-    }
-  }
+#  stage('Inside Docker') {
+#    timeout(60) {
+#      env.PATH = "/usr/local/bin:${env.PATH}"
+#      docker.image("centos:6.7").inside() {
+#        sh 'hostname'
+#      }
+#    }
+#  }
 }
