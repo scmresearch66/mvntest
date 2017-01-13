@@ -19,7 +19,3 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-artifacts:
-  files:
-    - my-app/target/messageUtil-1.0.jar
-  discard-paths: yes
