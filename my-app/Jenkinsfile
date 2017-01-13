@@ -8,6 +8,7 @@ node("dockernode") {
     sh 'echo $PATH';
     sh 'type docker';
     sh 'docker ps';
+
   }
 
 /*
