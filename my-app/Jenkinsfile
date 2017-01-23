@@ -15,9 +15,12 @@ node("master") {
 
      stage('Inside Docker') {
        timeout(160) {
-         docker.image("centos:6.7").inside() {
+         img = docker.image("centos:6.7")
+
+/*.inside() {
            sh 'hostname'
          }
+*/
        }
      }
   }
