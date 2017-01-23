@@ -4,10 +4,11 @@ node("master") {
   version = '1.0-SNAPSHOT'
 
   stage('Build site') {
-    sh 'my-app/gradlew';
-    sh 'cd my-app && gradle build';
+    sh 'my-app/gradlew'
+    sh 'cd my-app && gradle build'
+
     println "my-app/target/my-app-${version}.jar"
-    assert !file("my-app/target/my-app-${version}.jar").exists() 
+    assert file("my-app/target/my-app-${version}.jar").exists() 
     archiveArtifacts artifacts: 'my-app/target/my-app-${version}.jar', fingerprint: true, onlyIfSuccessful: true
   }
 
