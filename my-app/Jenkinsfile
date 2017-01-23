@@ -10,12 +10,14 @@ node("master") {
     archiveArtifacts artifacts: "my-app/target/my-app-${version}.jar", fingerprint: true, onlyIfSuccessful: true
   }
 
-  stage('Inside Docker') {
-    timeout(160) {
-      env.PATH = "/usr/local/bin:${env.PATH}"
-      docker.image("centos:6.7").inside() {
-        sh 'cd my-app && ./gradlew build'
-      }
-    }
+  node("DockerNode") {
+     stage('Inside Docker') {
+       timeout(160) {
+         env.PATH = "/usr/local/bin:${env.PATH}"
+         docker.image("centos:6.7").inside() {
+           sh 'cd my-app && ./gradlew build'
+         }
+       }
+     }
   }
 }
