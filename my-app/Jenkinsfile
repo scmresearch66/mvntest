@@ -6,11 +6,9 @@ node("master") {
   stage('Build site') {
     sh 'cd my-app && ./gradlew build'
 
-/*
     println "my-app/target/my-app-${version}.jar"
     assert file("my-app/target/my-app-${version}.jar").exists() 
     archiveArtifacts artifacts: 'my-app/target/my-app-${version}.jar', fingerprint: true, onlyIfSuccessful: true
-*/
   }
 
 /*  stage('Inside Docker') {
