@@ -4,9 +4,7 @@ node("master") {
   version = '1.0-SNAPSHOT'
 
   stage('Build site') {
-    sh 'my-app/gradlew'
-    sh 'type gradle'
-    sh 'cd my-app && gradle build'
+    sh 'my-app/gradlew && cd my-app && gradle build'
 
 /*
     println "my-app/target/my-app-${version}.jar"
