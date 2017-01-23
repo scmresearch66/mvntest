@@ -5,6 +5,7 @@ node("master") {
 
   stage('Build site') {
     sh 'my-app/gradlew'
+    sh 'type gradle'
     sh 'cd my-app && gradle build'
 
 /*
