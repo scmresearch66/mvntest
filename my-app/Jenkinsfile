@@ -4,19 +4,17 @@ node("dockernode") {
   env.PATH = "/usr/local/bin:${env.PATH}"
 
   stage('Build site') {
-    sh 'id';
-    sh 'echo $PATH';
-    sh 'type docker';
-    sh 'docker ps';
+    sh '';
   }
 
-  stage('Inside Docker') {
+/*  stage('Inside Docker') {
     timeout(60) {
       env.PATH = "/usr/local/bin:${env.PATH}"
       docker.image("centos:6.7").inside() {
         
-        sh 'hostname'
+        sh 'gradlew'
       }
     }
   }
+*/
 }
