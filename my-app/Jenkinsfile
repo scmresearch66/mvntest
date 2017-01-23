@@ -17,10 +17,9 @@ node("master") {
        timeout(160) {
          img = docker.image("centos:6.7")
 
-/*.inside() {
+         img.inside() {
            sh 'hostname'
          }
-*/
        }
      }
   }
