@@ -1,5 +1,5 @@
 node("master") {
-  /* checkout scm */
+  checkout scm
 
   env.PATH = "/usr/local/bin:${env.PATH}"
 
