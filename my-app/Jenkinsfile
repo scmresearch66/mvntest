@@ -1,11 +1,14 @@
 node("master") {
   checkout scm
 
+  def version = "1.0-SNAPSHOT";
+
   env.PATH = "/usr/local/bin:${env.PATH}"
 
   stage('Build site') {
     sh 'my-app/gradlew';
     sh 'cd my-app && gradle build';
+    archiveArtifacts artifacts: 'my-app/target/my-app-$version.jar', fingerprint: true, onlyIfSuccessful: true
   }
 
 /*  stage('Inside Docker') {
