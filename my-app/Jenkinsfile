@@ -1,4 +1,4 @@
-node("dockernode") {
+node("master") {
   /* checkout scm */
 
   env.PATH = "/usr/local/bin:${env.PATH}"
