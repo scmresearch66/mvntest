@@ -5,7 +5,7 @@ node("master") {
 
   stage('Build site') {
     sh 'my-app/gradlew';
-    sh 'cd my-app && gradle jar';
+    sh 'cd my-app && gradle build';
   }
 
 /*  stage('Inside Docker') {
