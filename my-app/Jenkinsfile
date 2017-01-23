@@ -4,7 +4,7 @@ node("master") {
   env.PATH = "/usr/local/bin:${env.PATH}"
 
   stage('Build site') {
-    sh '';
+    sh 'my-app/gradlew';
   }
 
 /*  stage('Inside Docker') {
