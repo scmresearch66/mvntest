@@ -14,6 +14,7 @@ node("dockernode") {
     timeout(60) {
       env.PATH = "/usr/local/bin:${env.PATH}"
       docker.image("centos:6.7").inside() {
+        
         sh 'hostname'
       }
     }
