@@ -20,7 +20,10 @@ node("master") {
          sh 'whoami'
 
          img.inside() {
+           checkout scm
+
            sh 'hostname'
+           sh 'cd my-app'
          }
        }
      }
