@@ -9,7 +9,6 @@ node("master") {
     println "my-app/target/my-app-${version}.jar"
   }
 
-/*
   node("DockerNode") {
      env.PATH = "/usr/local/bin:${env.PATH}"
 
@@ -29,5 +28,4 @@ node("master") {
        }
      }
   }
-*/
 }
