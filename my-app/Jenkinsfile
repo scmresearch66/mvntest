@@ -3,12 +3,12 @@ node("master") {
 
   version = '1.0-SNAPSHOT'
 
-  stage('Build site') {
+/*  stage('Build site') {
     sh 'cd my-app && ./gradlew build'
 
     println "my-app/target/my-app-${version}.jar"
   }
-
+*/
   node("DockerNode") {
      env.PATH = "/usr/local/bin:${env.PATH}"
 
