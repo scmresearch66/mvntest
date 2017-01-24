@@ -17,13 +17,11 @@ node("master") {
        timeout(160) {
          img = docker.image("centos:6.7")
 
-         sh 'whoami'
-
          img.inside() {
            checkout scm
 
            sh 'hostname'
-           sh 'cd my-app'
+           sh 'ls -l my-app'
          }
        }
      }
