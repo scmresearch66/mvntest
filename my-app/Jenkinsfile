@@ -23,7 +23,7 @@ node("master") {
            sh 'ls -l my-app'
            sh 'cd my-app && ./gradlew build'
 
-           archiveArtifacts artifacts: "my-app/target/my-app-${version}.jar", fingerprint: true, onlyIfSuccessful: true
+           archiveArtifacts artifacts: "my-app/target/*.jar", fingerprint: false
          }
        }
      }
