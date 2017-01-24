@@ -19,10 +19,9 @@ node("master") {
 
          sh 'whoami'
 
-     /*    img.inside() {
+         img.inside() {
            sh 'hostname'
          }
-      */
        }
      }
   }
