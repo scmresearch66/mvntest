@@ -14,7 +14,7 @@ node("master") {
 
      stage('Inside Docker') {
        timeout(160) {
-         img = docker.image("centos:6.7")
+         img = docker.image("openjdk:8")
 
          img.inside() {
            checkout scm
