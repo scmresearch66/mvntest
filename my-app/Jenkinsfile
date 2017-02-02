@@ -11,7 +11,7 @@ node("master") {
   }
 
   stage("Confirm") {
-    input id: 'ID', message: 'Continue?', ok: 'Yes', parameters: [choice(choices: ['YES', 'NO'], description: '', name: 'Choice')], submitter: 'admin', submitterParameter: 'choice'
+    input id: 'ID', message: 'Continue?', ok: 'Yes'
   }
 }
  /*
