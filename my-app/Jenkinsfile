@@ -21,6 +21,7 @@ node("master") {
       '0': { node('master') {
         stage("Nested") {
           println "Execute 0"
+          sh 'pwd'
           sh 'sleep 60'
         }
        }},
