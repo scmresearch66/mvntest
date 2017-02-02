@@ -5,23 +5,19 @@ apply plugin: 'jdepend'
 /* apply plugin: 'checkstyle' */
 /* apply plugin: 'docker' */
 
-repositories { mavenCentral() }
-
-/*
-buildscript {
-    repositories { mavenCentral() }
-    dependencies {
-        classpath 'se.transmode.gradle:gradle-docker:1.1'
-    }
+if (project.hasProperty('myVersion')) {
+     project.ext.xVersion = project.myVersion
+} else {
+     project.ext.xVersion = 'Developer-Build'
 }
-*/
+
+jar {
+  baseName = 'mytest'
+  version = project.ext.xVersion
+}
+
+repositories { mavenCentral() }
 
 dependencies {
   testCompile 'junit:junit:4.8.2'
 }
-
-/*
-distDocker {
-  exposePort 8080
-}
-*/
