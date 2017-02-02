@@ -13,6 +13,26 @@ node("master") {
   stage("Confirm") {
     input id: 'ID', message: 'Continue?', ok: 'Yes'
   }
+
+  stage("Parallel tests") {
+    // a loop counter of 131072 didn't yet show the error
+    def parallels =  [
+      '0': { node('win7') {
+        sh 'sleep 60'
+       }},
+       '1': { node('win7') {
+        sh 'sleep 60'
+       }},
+       '2': { node('win7') {
+        sh 'sleep 60'
+       }} ,
+       '3': { node('win7') {
+        sh 'sleep 60'
+    }}
+    ]
+
+    parallel parallels
+  }
 }
  /*
   node("DockerNode") {
