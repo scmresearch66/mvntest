@@ -6,6 +6,8 @@ node("master") {
   stage('Build site') {
     sh 'cd my-app && ./gradlew build'
 
+    stash includes: '**/target/*.jar', name: 'app' 
+
     println "my-app/target/my-app-${version}.jar"
     archiveArtifacts artifacts: "my-app/target/*.jar", fingerprint: false
   }
@@ -20,13 +22,17 @@ node("master") {
     def parallels =  [
       '0': { node('master') {
         stage("Nested") {
+          unstash 'app'
           println "Execute 0"
           sh 'pwd'
+          sh 'find .'
           sh 'sleep 60'
         }
        }},
        '1': { node('master') {
         println "Execute 1"
+        sh 'pwd'
+        sh 'find .'
         sh 'sleep 60'
        }},
        '2': { node('master') {
