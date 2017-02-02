@@ -11,7 +11,7 @@ node("master") {
     println "my-app/target/my-app-${version}.jar"
     archiveArtifacts artifacts: "my-app/target/*.jar", fingerprint: false
 
-    junit '**/target/surefire-reports/*.xml' 
+    junit '*/build/test-results/test/*.xml' 
   }
 
 /*  stage("Confirm") {
