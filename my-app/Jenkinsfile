@@ -10,8 +10,10 @@ node("master") {
     archiveArtifacts artifacts: "my-app/target/*.jar", fingerprint: false
   }
 
-  input id: 'ID', message: 'Continue?', ok: 'Yes', parameters: [choice(choices: ['YES', 'NO'], description: '', name: 'Choice')], submitter: 'admin', submitterParameter: 'choice'
-
+  stage("Confirm") {
+    input id: 'ID', message: 'Continue?', ok: 'Yes', parameters: [choice(choices: ['YES', 'NO'], description: '', name: 'Choice')], submitter: 'admin', submitterParameter: 'choice'
+  }
+}
  /*
   node("DockerNode") {
      env.PATH = "/usr/local/bin:${env.PATH}"
@@ -31,4 +33,3 @@ node("master") {
      }
   }
 */
-}
