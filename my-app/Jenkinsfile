@@ -9,6 +9,9 @@ node("master") {
     println "my-app/target/my-app-${version}.jar"
     archiveArtifacts artifacts: "my-app/target/*.jar", fingerprint: false
   }
+
+  input id: 'ID', message: 'Continue?', ok: 'Yes', parameters: [choice(choices: ['YES', 'NO'], description: '', name: 'Choice')], submitter: 'admin', submitterParameter: 'choice'
+
  /*
   node("DockerNode") {
      env.PATH = "/usr/local/bin:${env.PATH}"
@@ -23,8 +26,6 @@ node("master") {
            sh 'hostname'
            sh 'ls -l my-app'
            sh 'cd my-app && ./gradlew build'
-
-           /* archiveArtifacts artifacts: "my-app/target/*.jar", fingerprint: false */
          }
        }
      }
