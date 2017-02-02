@@ -17,16 +17,20 @@ node("master") {
   stage("Parallel tests") {
     // a loop counter of 131072 didn't yet show the error
     def parallels =  [
-      '0': { node('win7') {
+      '0': { node('master') {
+        println "Execute 0"
         sh 'sleep 60'
        }},
-       '1': { node('win7') {
+       '1': { node('master') {
+        println "Execute 1"
         sh 'sleep 60'
        }},
-       '2': { node('win7') {
+       '2': { node('master') {
+        println "Execute 2"
         sh 'sleep 60'
        }} ,
-       '3': { node('win7') {
+       '3': { node('master') {
+        println "Execute 3"
         sh 'sleep 60'
     }}
     ]
