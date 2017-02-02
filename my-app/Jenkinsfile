@@ -4,7 +4,7 @@ node("master") {
 
 
   stage('Build site') {
-    
+     
     sh 'cd my-app && ./gradlew build'
 
     stash includes: '**/build/libs/*.jar', name: 'app' 
@@ -14,6 +14,7 @@ node("master") {
     junit '*/build/test-results/test/*.xml' 
     
     publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'my-app/build/reports/pmd', reportFiles: 'main.html', reportName: 'HTML Report'])
+    publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'my-app/build/reports/pmd', reportFiles: 'test.html', reportName: 'HTML Report'])
   }
 
 /*  stage("Confirm") {
