@@ -12,6 +12,8 @@ node("master") {
     archiveArtifacts artifacts: "my-app/build/libs/*.jar", fingerprint: false
 
     junit '*/build/test-results/test/*.xml' 
+    
+    publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'my-app/build/reports/pmd', reportFiles: 'main.html', reportName: 'HTML Report'])
   }
 
 /*  stage("Confirm") {
