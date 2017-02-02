@@ -1,4 +1,8 @@
 apply plugin: 'java'
+apply plugin: 'pmd'
+apply plugin: 'findbugs'
+apply plugin: 'jdepend'
+/* apply plugin: 'checkstyle' */
 /* apply plugin: 'docker' */
 
 repositories { mavenCentral() }

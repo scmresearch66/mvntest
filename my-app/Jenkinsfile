@@ -3,12 +3,13 @@ node("master") {
 
   version = '1.0-SNAPSHOT'
 
-/*  stage('Build site') {
+  stage('Build site') {
     sh 'cd my-app && ./gradlew build'
 
     println "my-app/target/my-app-${version}.jar"
+    archiveArtifacts artifacts: "my-app/target/*.jar", fingerprint: false
   }
-*/
+ /*
   node("DockerNode") {
      env.PATH = "/usr/local/bin:${env.PATH}"
 
@@ -28,4 +29,5 @@ node("master") {
        }
      }
   }
+*/
 }
