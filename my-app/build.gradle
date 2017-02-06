@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'pmd'
 apply plugin: 'findbugs'
 apply plugin: 'jdepend'
+apply plugin: 'checkstyle'
 
 buildscript {
   repositories {
@@ -16,7 +17,11 @@ buildscript {
 
 apply plugin: 'org.sonarqube'
 
-/* apply plugin: 'checkstyle' */
+checkstyle {
+    configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+    toolVersion = '6.7'
+}
+
 /* apply plugin: 'docker' */
 
 if (project.hasProperty('myVersion')) {
