@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                env.each { name, value -> println "Name: $name -> Value $value" }
                 deleteDir()
                 checkout scm
                 sh 'set'
