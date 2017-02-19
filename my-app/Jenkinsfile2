@@ -3,7 +3,11 @@ pipeline {
     stages {
         stage('build') {
             steps {
+
+/*
                 env.each { name, value -> println "Name: $name -> Value $value" }
+*/
+		echo "My branch is: ${env.BRANCH_NAME}"
                 deleteDir()
                 checkout scm
                 sh 'set'
