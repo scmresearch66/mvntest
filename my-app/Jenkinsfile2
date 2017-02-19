@@ -7,7 +7,9 @@ pipeline {
                 checkout scm
                 sh 'set'
 
-#                sh 'cd my-app && mvn --version'
+/*
+                sh 'cd my-app && mvn --version'
+*/
             }
         }
     }
