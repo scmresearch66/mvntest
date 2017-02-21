@@ -7,6 +7,7 @@ node("master") {
   shortCommit = gitCommit.take(6)
 
   echo "Commit: ${gitCommit}";
+  echo "Commit: ${shortCommit}";
 
   echo "My branch is: ${env.BRANCH_NAME}"
 
