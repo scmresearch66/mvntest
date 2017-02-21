@@ -2,6 +2,12 @@ node("master") {
   deleteDir()
   checkout scm
 
+  gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+  // short SHA, possibly better for chat notifications, etc.
+  shortCommit = gitCommit.take(6)
+
+  echo "Commit: ${gitCommit}";
+
   echo "My branch is: ${env.BRANCH_NAME}"
 
   stage('Env') {
