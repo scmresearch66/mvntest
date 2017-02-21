@@ -4,7 +4,12 @@ node("master") {
 
   echo "My branch is: ${env.BRANCH_NAME}"
 
+  stage('Env') {
+    sh 'set'
+  }
+
   stage('Build site') {
+    
      
     sh 'cd my-app && ./gradlew build'
 
